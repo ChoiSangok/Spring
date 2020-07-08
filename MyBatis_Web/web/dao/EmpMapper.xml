@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+<mapper namespace="web.dao.EmpDao">
+	
+	<select id="selectAll" resultType="web.dto.Emp">
+		select * from emp
+		order by empno
+	</select>
+
+	<select id="detail" resultType="web.dto.Emp" parameterType="int">
+		select * from emp
+		where empno = #{empno}
+	</select>
+	
+
+
+
+</mapper>
