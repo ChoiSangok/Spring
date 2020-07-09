@@ -1,0 +1,67 @@
++ <resultMap> 태그
+
+ - 마이바티스 Mapper 에서 사용할 수 있는 태그 중 하나
+ 
+ - 테이블의 컬럼명과 DTO 의 멤버필드명이 다를 때 조회결과(ResultSet) 를 매핑하는 태그
+ 
+ - 조회된 컬럼명과 멤버필드명이 같을 때 자동으로 매핑된다
+ 
+ - 다를 때는 <resultMap> 을 활용하여 직접 매핑되도록 설정한다
+ 
+ - <resultMap> 을 사용하지 않는다면 SQL 의 Alias 를 이용할 수 있다
+ 
+      ex)   SELECT board_no AS boardNo FROM ...
+      
+      
+      
+      
++ <resultMap> 태그의 속성
+
+ - id : 생성하는 resultMap의 이름을 지정하는 속성
+        ( 주로 DTO 클래스명으로 짓는다 )
+ 
+ - type : resultMap으로 매핑될 실제 존재하는 dto클래스를 설정하는 속성
+          ( 패키지까지 포함한 풀네임으로 클래스명을 적는다 ) 
+          
+  
++ <resultMap> 태그의 하위 태그
+
+ - <id> : 키값에 해당하는 컬럼을 지정할 때 사용
+ 
+ - <result> : 키값이 아닌 컬럼을 지정할 때 사용
+ 
+        ** 둘 다 column 속성으로 컬럼명, property 속성으로 필드명을 명시한다
+        
+        
+ - <constructor> : 생성자 지정 태그
+      <resultMap> 으로 매핑된 결과에 초기값을 넣을 때 사용한다
+ 
+ - <asscociation> : <resultMap> 의 1:1 관계의 객체를 설정할 때 사용한다
+ 
+ - <collection> : <resultMap> 의 1:다 관계의 객체를 설정할 때 사용한다
+ 
+        ex)
+        //1:1관계
+        class Board{
+          int boardno;
+          BoardFile file;
+        }
+        
+        //1:m 관계
+        class Board{
+          int boardno;
+          BoardFile[] file;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ 
