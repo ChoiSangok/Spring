@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="selectKey.dao.SelectKeyDao">
+
+	<insert id="insert" parameterType="selectKey.dto.TestMember">
+	
+<!-- 	sequece num -->
+		<selectKey order="BEFORE" resultType="int" keyProperty="no">
+			SELECT test_member_seq.nextval from dual
+		</selectKey>
+	
+	
+		insert into testmember(no,id,pw)
+		values(#{no}, #{id},#{pw})
+	</insert>
+
+
+</mapper>
