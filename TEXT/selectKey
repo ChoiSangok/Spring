@@ -1,0 +1,44 @@
++ <selectKey> 태그
+
+ - 자동 생성 키(auto increment) 를 지원하지 않는 데이터베이스(ex. 오라클 DB) 에서
+  사용하는 키 생성 태그
+  
+ - <insert> 태그 안에서 사용한다
+ 
+ - 주로 PK 값을 생성하는데 사용되는 태그
+ 
+ 
++ <selectKey> 태그의 속성
+
+ - order
+       BEFORE : insert 쿼리 수행 전에 selectKey 가 동작하도록 설정
+       AFTER : insert 쿼리 수행 후에 selectKey 가 동작하도록 설정
+ 
+ - resultType
+      조회결과 값의 데이터 타입( 자바 타입 )
+ 
+ - keyProperty
+      결과값이 매핑될 프로퍼티이름 지정( parameterType 의 멤버 필드명 )
+      
+ - statementType
+      Statement, PreparedStatement, Callable 중 선택할 수 있다
+      기본값은 PreparedStatement
+      
+      ** Callable 은 PL/SQL 사용할 때 적용한다
+      
+      
+      
+      
+	<insert id="insert" parameterType="selectKey.dto.TestMember">
+	
+<!-- 	sequece num -->
+		<selectKey order="BEFORE" resultType="int" keyProperty="no">
+			SELECT test_member_seq.nextval from dual
+		</selectKey>
+	
+	
+		insert into testmember(no,id,pw)
+		values(#{no}, #{id},#{pw})
+	</insert>
+
+ 
