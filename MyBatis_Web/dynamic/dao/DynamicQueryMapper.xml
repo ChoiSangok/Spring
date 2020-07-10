@@ -7,35 +7,104 @@
 
 <mapper namespace="dynamic.dao.DynamicQueryDao">
 
-	<select id="select" resultType="hashmap">
-		select * from testmember
-		
-		<if test="false">		
-		order by no
-		</if>
-	</select>
-	
-	<select id="select2" parameterType="string" resultType="web.dto.Emp">
-		select *from emp
-		<if test='value != null and !value.equals("")'>
-		where ename like '%' || #{ename} || '%'
-		</if>
-	</select>	
-	
-	
-	
-	<select id="select3" parameterType="web.dto.Emp" resultType="web.dto.Emp">
-	
-		select * from emp
-		where 1=1
-		<if test='empno != null'>
-		 and empno=#{empno}
-		</if>
-		<if test='ename !=null and !ename.equals("")'>
-		or ename like '%' || #{ename} || '%'
-		</if>
-	
-	</select>
-	
-	
-</mapper>
+   <select id="select" resultType="hashmap">
+      select * from testmember
+      
+      <if test="false">      
+      order by no
+      </if>
+   </select>
+   
+   <select id="select2" parameterType="string" resultType="web.dto.Emp">
+      select *from emp
+      <if test='value != null and !value.equals("")'>
+      where ename like '%' || #{ename} || '%'
+      </if>
+   </select>   
+   
+   
+   
+   <select id="select3" parameterType="web.dto.Emp" resultType="web.dto.Emp">
+   
+      select * from emp
+      where 1=1
+      <if test='empno != null'>
+       and empno=#{empno}
+      </if>
+      <if test='ename !=null and !ename.equals("")'>
+      or ename like '%' || #{ename} || '%'
+      </if>
+   
+   </select>
+   
+
+   <select id="select4" resultType="web.dto.Emp" parameterType="hashmap">
+      
+      select * from emp
+      
+      <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <choose>
+         <when test="category.equals('ename')">
+          and ename=#{keyword}
+         </when>
+         
+         <when test="category.equals('job')">
+            and job=#{keyword}
+         </when>
+      </choose>
+      </trim>
+
+   </select>
+   
+   <select id="selectCheckbox" parameterType="hashmap" resultType="web.dto.Emp">
+  	 	select * from emp
+  	 	<if test="deptnoArr != null">
+  	 	where deptno in
+  	 	<foreach collection="deptnoArr" item="deptno" open="(" close=")" separator=",">
+  	 		#{deptno}
+  	 		
+  	 	</foreach>
+  	 	</if>
+  	 	
+   </select>
+   
+</mapper>   
+
+   
+     <!-- trim 태그 사용 예시 1 -->
+   
+<!--    <select id="select4"> -->
+<!--       select * from emp -->
+<!--       where  -->
+<!--          deptno = 10 -->
+         
+<!--       <trim prefix="AND (" prefixOverrides="OR" suffix=")"> -->
+<!--       <if test = "job!= null"> -->
+<!--       OR job LIKE '%' || #{job} || '%' -->
+<!--       </if> -->
+<!--       <if test="sal1=null"> -->
+<!--       OR sal > #{sal} -->
+<!--       </if> -->
+<!--       </trim> -->
+<!--    </select> -->
+
+<!-- trim 태그 사용 예시 2 -->
+<!--         <update id="update"> -->
+<!--            UPDATE emp -->
+           
+<!--            <trim prefix="SET" suffixOverrides=","> -->
+<!--                  <if test="ename!=null"> -->
+<!--                     ename=#{ename}, -->
+<!--                  </if> -->
+<!--                  <if test="job!=null"> -->
+<!--                     job=#{job}, -->
+<!--                  </if>       -->
+<!--                  <if test="deptno!=null"> -->
+<!--                     deptno=#{deptno}, -->
+<!--                  </if>               -->
+<!--            </trim>    -->
+<!--                  WHERE empno=#{empno} -->
+<!--         </update> --> 
+
+
+
