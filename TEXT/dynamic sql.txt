@@ -1,0 +1,110 @@
++ 동적 SQL 쿼리
+
+ - 동적( Dynamic ) 으로 변화되어야하는 SQL 쿼리를 작성할 수 있도록
+  도와주는 마이바티스 태그
+  
+ - <select>, <insert>, <delete>, <update> 안에서 사용한다
+ 
+ - <if>, <choose>, <trim>, <foreach> 태그를 제공한다
+
+
++ if 태그
+
+ - test 속성의 값을 이용하여 조건문을 지정한다
+ 
+ - test 속성의 값은 "true" / "false" 가 되도록 만든다
+ 
+ - test 속성의 값은 문자열로 처리된다
+ - "true" 나 "false" 가 아니면 "true" 로 취급된다
+ 
+ - 조건의 결과에 따라 쿼리의 추가 여부가 결정된다
+ 
+      <select id="" parameterType="web.dto.Emp">
+        SELECT * FROM EMP
+        WHERE 1=1
+        
+        <if test="empno !=null">
+          AND empno=#{empno}
+        </if>
+        
+        <if test="ename !=null and !ename.equals('')">
+          and ename=#{ename}
+        </if>
+        
+      </select>
+      
+      ex) parameterType 이 "string" 일 경우 value 키워드 사용을 고려할 것!
+      <select id="" parameterType="string">
+        select * from test
+        <if test="value==null">
+          where testid=#{value}
+        </if>
+      </select>
+      
+
++ <choose>, <when>, <otherwise> 태그
+
+ - if ~ else if ~ else 구문과 비슷한 제어문 태그
+ 
+ - <choose> 안에 <when> 태그로 조건문을 작성한다
+ 
+ - <when> 태그에 test 속성으로 조건문을 작성하여 else if같은 역할을 한다
+ 
+ - <when> 들의 마지막으로 <otherwise> 태그를 사용하여 else 같은 역할을 한다
+      
+        ex)     <choose>
+                  <when test="조건문">
+                  </when>
+                  <when test="조건문1">
+                  </when>
+                  ,,,
+                  
+                  <otherwise>
+                  </otherwise>
+                </choose>
+               
+
++ <trim> 태그
+
+ - WHERE 절이나 UPDATE 의 SET 절에서 사용된다
+ 
+ - 동적쿼리가 전달파라미터에 따라 추가되지 않는 상황에서 AND 나 OR 같은
+  키워드가 충돌날 수 있는 상황에서 사용한다
+  
+ - SET 절에서는 마지막 ',' 를 고려해서 사용한다
+ 
+ - <trim> 태그의 속성
+ 
+      prefix : 접두어 지정
+      
+      prefixOverrides : 접두어로 설정한 값과 겹쳐지면 제거할 항목을 지정
+      
+      suffix : 접미어 지정
+      
+      suffixOverrides : 접미어로 설정한 값과 겹쳐지면 제거할 항목을 지정
+      
+      
++ <foreach> 태그
+
+ - 반복되는 구문을 동적으로 생성할 때 사용하는 태그
+ 
+ - 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
