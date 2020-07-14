@@ -1,0 +1,111 @@
++ 마이바티스에서 NULL 값 처리하기
+
+ - INSERT 나 UPDATE 쿼리를 이용할 때 NULL 값을 입력/수정 해야할 때가 있다
+ 
+ - 마이바티스에서는 NULL 값을 입력하려고 할 때 JDBC 타입을 명시해주어야 한다
+ 
+ - 타입을 명시하지 않으면 "부적합한 열 유형 : 1111" 같은 에러메시지가 발생한다
+ 
+ 
+ 
++ NULL 값 처리 방법 1
+ - Mapper XML 파일에서 SQL 쿼리를 작성할 때 파라미터 값에 각각 데이터타입을 명시함
+  
+          ex)   <insert id="insert">
+                    INSERT INTO emp (empno, ename )
+                    VALUES ( #{empno}, #{ename, jdbcType=VARCHAR} )
+                </insert>
+      
+      
+
++ NULL 값 처리 방법 2
+ - Configuration XML 파일에서 <settings> 를 이용하여 전역 설정하기
+ 
+          ex)   //mybatis-config.xml 파일 내부
+                ...
+                <settings>
+                    <setting name="jdbcTypeForNull" value="NULL" />
+                </settings>
+                ...
+                
+
+
++ jdbcType 에 설정할 수 있는 값
+ - VARCHAR, DATE, TIMESTAMP, INTEGER, CHAR, DOUBLE
+ 
+
+
++ SELECT 태그에서 resultType 으로 설정할 수 있는 값 ( 키워드 )
+
+ - DB 조회결과 ( resultSet ) 를 Java의 어떤 데이터타입으로 변환하여 반환할 것인지 설정하는 속성값
+ 
+ - 실제 DTO(객체) 는 패키지 포함하는 풀네임으로 적용할 수 있다
+  ( typeAlias 가능함 )
+  
+ - 미리 정의되어있는 키워드를 사용할 수 있다
+ 
+ - org.apache.ibatis.type.TypeAliasRegistry 클래스에 명시되어있다
+
+        키워드                 자바 타입
+        string                 java.lang.String
+        date                   java.util.Date
+        
+        map                    java.util.Map
+        hashmap                java.util.HashMap
+        
+        list                   java.util.List
+        arraylist              java.util.ArrayList
+        
+        ResultSet              java.sql.ResultSet
+        
+        
+        ----------------------------------------------
+        
+        
+        int                    java.lang.Integer
+        integer                java.lang.Integer
+        
+        _int                   int
+        _integer               int
+        
+        int[]                  java.lang.Integer[]
+        _int[]                 int[]
+        
+        byte                   자바 기본 타입 이름에 '_'가 안붙어있으면 Wrapper 클래스 타입
+        short
+        long
+        
+        float
+        double
+        
+        boolean
+        
+        _byte                   자바 기본 타입 이름에 '_'가 붙어있으면 기본 데이터 타입
+        _short
+        _long
+        
+        _float
+        _double
+        
+        _boolean
+        
+        
+        
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
