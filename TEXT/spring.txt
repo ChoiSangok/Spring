@@ -1,0 +1,34 @@
++ Spring Framwork
+ - 자바를 이용한 프로그램 개발 프레임 워크
+ 
++ Spring STS tool
+ - STS : Spring Tool Suite
+ 
+ - 이클립스에 Spring Framework 를 개발할 수 있도록 제공되는 툴
+ 
++ STS 배포 방식 2가지
+
+ 1. 이클립스에 플러그인 형태로 STS 툴을 설치하는 방법
+ 
+ 2. STS tool 을 다운받아 한번에 설치하는 방법
+  ( 이클립스 + STS 를 한 묶음으로 만들어 스프링 전용 툴을 만든 것 )
+ 
+
++ 이클립스에 플러그인 형태로 STS 툴 설치하기
+ - 이클립스의 Help - Eclipse Marketplace 메뉴 선택
+ 
+ - Find창에서 sts 검색
+ 
+ - 검색결과에서 Spring Tools 3 (Standalone Edition) 3.9.13 RELEASE 버전 다운
+ 
+ - INSTALL 클릭
+ 
+ - Confirm 클릭
+ 
+ - 라이센스 Accept 선택
+ 
+ - Finish
+          ** 별도의 창이 뜬다면 Select All 하고 Accept
+          ** Install Anyway 선택
+          
+ - 설치 완료 후 Restart Now 선택
