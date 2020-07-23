@@ -1,0 +1,35 @@
++ AOP(Aspect Oriented Programming : 관점 지향 프로그래밍
+
+ - 시스템의 규모와 복잡도가 증가하면서 기능별로 모듈화를 거치더라도 중복되는 코드가 발생
+ ex) 트랜잭션 관리, 로깅처리
+ - 이러한 코드들을 다시 한번 더 모듈화 해내어 분리하는 것이 AOP 이다
+ 즉 재모듈화
+ 
++ AOP 용어
+  1. Advice
+      advice 는 PointCut 에서 지정한 JoinPoint 에서 실행되어야 하는 코드
+      - Around Advice : JoinPoint 의 앞과 뒤에서 실행되는 Advice
+      - Before Advice : JoinPoint 의 앞에서 실행되는 Advice
+      - After return Advice : JoinPoint 메소드 호출이 정상적으로 종료된 뒤에 실행되는 Advice
+      - After Throwing Advice : JoinPoint 메소드 호출이 예외를 반환할 때 실행되는 Advice
+  
+  2. JoinPoint
+       advice 를 적용할 수 있는 지점
+       - spring 에서는 method 실행 전, 혹은 실행 후에 advice 를 적용할 수 있다.
+ 
+  3. PointCut
+       JointPoint 의 부분집합으로 실제로 우리가 Advice 를 적용한 JoinPoint
+       스프링에서는 AspectJ문법을 활용해서 PointCut 을 정의할 수 있다.
+       
+  4. Weaving
+       Advice 를 로직코드에 적용하는 것(실행)
+       
+  5. Advisor
+       Advice + pointCut : 언제 무엇을 할지 정의하는 것!
+       
+  6. Target
+       핵심로직을 구현하는 클래스
+       
+  7. Proxy
+       대상 객체에 Advice가 적용 된 후 생성된 객체
+       
