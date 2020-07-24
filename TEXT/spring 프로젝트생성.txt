@@ -1,0 +1,40 @@
++ Spring MVC Legacy Project 생성하기
+
+ - new > other > Spring > Spring Legacy Project 클릭
+ - Project name 설정 > Templates 영역 가장 하단에 있는 Spring MVC Project 선택
+ 
+ - topLevelPackage 설정 최소한 3depth로!
+ ex) com.kh.academy
+ 여기서 세번째 depth가 Context Path로 등록된다
+ academy가 Context Path!
+ 
+ ex) localhost:8888/academy
+ 
+
+
+pom.xml버전
+
+1. 톰켓 버전에 맞는 Dynamic Web Project 생성
+ - Web module 이 톰켓버전과 맞는 web.xml파일을 구하기 위함
+
+2. Spring legacy 프로젝트의 web.xml 을 위해서 생성한 프로젝트의 web.xml로 교체
+
+3. pom.xml 에서 java:1.6 -> java:1.8
+                Springframwork : 3.1.1 -> 5.2.6 버전 변경
+                servlet - api :
+                      버전변경 : 2.5 -> 4.0.1
+                      artifact - id 변경 : servlet-api -> javax.servlet-api
+                      
+                jsp-api : 
+                      버전변경 : 2.1 -> 2.3.3
+                      artifact - id 변경 : jsp-api -> javax.servlet.jsp-api
+                
+                maven-compiler-plugin > source :1.6 -> 1.8
+                                        target : 1.6 -> 1.8
+                                        
+
+4. 프로젝트 우클릭 -> properties -> project facet
+                                  dynamic web module : 2.5 -> 4.0
+                                  java : 1.6 -> 1.8
+                                  
+5. maven project update 
