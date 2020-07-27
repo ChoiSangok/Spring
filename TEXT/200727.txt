@@ -1,0 +1,18 @@
++ 이클립스 주석 줄바뀜 방지
+ window - Preference - java - Code Style - Formatter - Edit
+ 
+ Format line commencts on first .. 체크
+ Never join lines 체크
+ 
++ 이클립스 메모리 할당량 확보
+ 이클립스가 설치된 폴더 - eclipse.ini
+ 
+ 
+
++ Servlet - mybatis 연동
+ SqlSessionFactoryBuilder > SqlSessionFactory > SqlSession
+ 
++ Spring - mybatis 연동
+ SqlSessionFactoryBean > SqlSessionFactory > SqlSessionTemplate
+ 
+ 
