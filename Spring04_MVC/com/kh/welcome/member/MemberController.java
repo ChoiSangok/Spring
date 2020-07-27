@@ -24,7 +24,6 @@ public class MemberController {
 //		//		 jsp를 찾아서 사용자에게 보내준다.
 //		
 		
-
 	/**
 	 * RequestMapping을 class에 적용하면 해당 클래스의 모든 메소드에 적용되는
 	 * url를 지정할 수 있다.
