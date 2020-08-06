@@ -1,0 +1,12 @@
+JUnit - Spring 적용
+
+   1. spring-test, hamcrest-library, hamcrest-all, mockito-all Dependency 추가
+   
+   2. 프로젝트 우클릭 > properties > java-buildPath > libarary > add libarary
+      > junit(버전 5)로 추가
+
+   3. src/main/resources/mybatis 폴더를 src/test/resources로 복사-붙여넣기
+
+   4. 프로젝트 우클릭 > Run as 클릭 > Run-config 
+         JUnit 클릭 > classPath > user entri 클릭 
+         > add External Jar >  ojdbc6.jar 추가
