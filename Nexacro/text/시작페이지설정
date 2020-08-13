@@ -1,0 +1,5 @@
++ 넥사크로 시작페이지 설정
+
+  Application Information > Applications > Application_Desktop > Information > edit > childFrame 추가
+  
+  childFrame formurl속성에 원하는 form설정
