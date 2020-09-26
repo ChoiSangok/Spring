@@ -48,6 +48,5 @@ public class School {
 	public String toString() {
 		return "School [kim=" + kim + ", grade=" + grade + "]";
 	}	
-	
 
 }
